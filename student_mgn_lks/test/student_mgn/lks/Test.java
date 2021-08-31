@@ -9,10 +9,10 @@ public class Test {
 
 	public static void main(String[] argrs) {
 		StudentInfo info = new StudentInfo(2, "아리랑", 70, 40, 60);
-//		info.insertData();
-//		info.updateData(40,70,50);
-		info.deleteData();
-		
-//		StudentDaoImpl.getInstance().updateStudent(info.getStd());
+		// info.insertData();
+		// info.updateData(40,70,50);
+		// info.deleteData();
+
+		// StudentDaoImpl.getInstance().updateStudent(info.getStd());
 	}
 }
