@@ -41,11 +41,11 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public Student selecStudentByName(Student std) {
-		String sql = "select std_id, std_name, kor, eng, math from student where std_name = ?";
+	public Student selecStudentById(Student std) {
+		String sql = "select std_id, std_name, kor, eng, math from student where std_id = ?";
 
 		try (Connection con = JdbcUtill.getConnection(); PreparedStatement pre = con.prepareStatement(sql);) {
-			pre.setString(1, std.getStd_Name());
+			pre.setInt(1, std.getStd_Id());
 			try (ResultSet rs = pre.executeQuery()) {
 				if (rs.next()) {
 					return getStudent(rs);
@@ -85,8 +85,7 @@ public class StudentDaoImpl implements StudentDao {
 			pre.setInt(1, std.getKor());
 			pre.setInt(2, std.getEng());
 			pre.setInt(3, std.getMath());
-			pre.setInt(4, std.getStd_Id());
-
+			pre.setInt(4, std.getStd_Id());			
 			return pre.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.toString());

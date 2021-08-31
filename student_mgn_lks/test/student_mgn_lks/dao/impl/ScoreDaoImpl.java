@@ -13,6 +13,15 @@ import student_mgn_lks.util.JdbcUtill;
 
 public class ScoreDaoImpl implements ScoreDao {
 
+	private static final ScoreDaoImpl instance = new ScoreDaoImpl();
+
+	public static ScoreDaoImpl getInstance() {
+		return instance;
+	}
+
+	public ScoreDaoImpl() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public ArrayList<Score> selectScoreByAll() {
 		String sql = "select total_score, avg_score from score";
@@ -53,9 +62,9 @@ public class ScoreDaoImpl implements ScoreDao {
 		String sql = "insert into score values(?,?,?)";
 		try(Connection con = JdbcUtill.getConnection();
 				PreparedStatement pre = con.prepareStatement(sql);){
-			pre.setInt(1, sc.getStd_Id());
-			pre.setInt(2, sc.getTotal_Score());
-			pre.setFloat(3, sc.getAvg_Score());
+			pre.setInt(1, sc.getTotal_Score());
+			pre.setFloat(2, sc.getAvg_Score());
+			pre.setInt(3, sc.getStd_Id());
 			return pre.executeUpdate();
 		}
 		catch (SQLException e) {

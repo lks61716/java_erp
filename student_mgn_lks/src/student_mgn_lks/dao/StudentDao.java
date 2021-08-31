@@ -7,7 +7,7 @@ import student_mgn_lks.dto.Student;
 public interface StudentDao {
 	ArrayList<Student> selectStudentByAll();
 
-	Student selecStudentByName(Student std);
+	Student selecStudentById(Student std);
 
 	int insertStudent(Student std);
 
